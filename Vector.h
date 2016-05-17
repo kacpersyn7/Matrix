@@ -14,13 +14,16 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-class Vector {
-public:
-    Vector();
-    Vector(const Vector& orig);
-    virtual ~Vector();
-private:
-
+class Vector 
+{
+    public:
+        Vector(int size, int *vector);
+        Vector(const Vector& orig);
+        virtual ~Vector();
+         
+    private:
+        int *vector;
+        int size;
 };
 
 #endif /* VECTOR_H */

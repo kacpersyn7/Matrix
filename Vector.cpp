@@ -13,12 +13,20 @@
 
 #include "Vector.h"
 
-Vector::Vector() {
+Vector::Vector(int size, int *vector) 
+{
+    if(size < 1)
+    {
+        vector = NULL;
+        size = 0;
+    }
 }
 
-Vector::Vector(const Vector& orig) {
+Vector::Vector(const Vector& orig) 
+{
 }
 
-Vector::~Vector() {
+Vector::~Vector() 
+{
 }
 
