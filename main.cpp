@@ -13,13 +13,22 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include "Vector.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-
+    using namespace std;
+    int tab[3] = {1,2,3};
+    Vector vector(3,tab);
+    cout<<vector;
+    Vector cos;
+    cout<<cos;
+    cin>>cos;
+    cout<<cos;
+    cin>>cos;
+    cout<<cos;
     return 0;
 }
 

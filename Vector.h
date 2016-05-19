@@ -13,17 +13,31 @@
 
 #ifndef VECTOR_H
 #define VECTOR_H
-
+#include <iostream>
+#include <stdexcept>
+using namespace std;
 class Vector 
 {
     public:
         Vector(int size, int *vector);
         Vector(const Vector& orig);
+        Vector();
         virtual ~Vector();
-         
+        
+        bool operator==(const Vector & vector) const;
+        bool operator!=(const Vector & vector) const; 
+        Vector operator+(const Vector & vector) const; 
+        Vector operator-(const Vector & vector) const; 
+        Vector operator+=(const Vector & vector); 
+        Vector operator-=(const Vector & vector); 
+        Vector operator*(int value);
+        Vector operator*=(int value);
+        
+        friend ostream & operator<<(ostream & os, const Vector & vector);
+        friend istream & operator>>(istream & os, const Vector & vector);
     private:
-        int *vector;
-        int size;
+        int *vector_m;
+        int size_m;
 };
 
 #endif /* VECTOR_H */
