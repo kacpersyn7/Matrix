@@ -19,14 +19,17 @@ using namespace std;
 class Vector 
 {
     public:
-        Vector(int size, int *vector);// \/
+        Vector(int size, int *tab);// \/
         Vector(const Vector& orig);// \/
+        Vector(int size);
         Vector();// \/
-        virtual ~Vector();
+        virtual ~Vector();// \/
         
         Vector & operator=(const Vector & vector);// \/
-        bool operator==(const Vector & vector) const;
-        bool operator!=(const Vector & vector) const; 
+        
+        bool operator==(const Vector & vector) const;// \/
+        friend bool operator!=(const Vector & first,const Vector & second) ; // \/
+        
         Vector operator+(const Vector & vector) const; 
         Vector operator-(const Vector & vector) const; 
         Vector operator+=(const Vector & vector); 
@@ -39,6 +42,7 @@ class Vector
     private:
         int *vector_m;
         int size_m;
+        
 };
 
 #endif /* VECTOR_H */
