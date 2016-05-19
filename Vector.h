@@ -19,11 +19,12 @@ using namespace std;
 class Vector 
 {
     public:
-        Vector(int size, int *vector);
-        Vector(const Vector& orig);
-        Vector();
+        Vector(int size, int *vector);// \/
+        Vector(const Vector& orig);// \/
+        Vector();// \/
         virtual ~Vector();
         
+        Vector & operator=(const Vector & vector);// \/
         bool operator==(const Vector & vector) const;
         bool operator!=(const Vector & vector) const; 
         Vector operator+(const Vector & vector) const; 

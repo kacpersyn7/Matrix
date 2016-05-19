@@ -29,6 +29,8 @@ int main(int argc, char** argv) {
     cout<<cos;
     cin>>cos;
     cout<<cos;
+    vector = cos;
+    cout<<vector;
     return 0;
 }
 

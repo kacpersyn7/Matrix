@@ -38,6 +38,19 @@ Vector::Vector(int size, int *vector)
 }
 Vector::Vector(const Vector& orig) 
 {
+    vector_m = new int[orig.size_m];
+    size_m = orig.size_m;
+    for(int i = 0; i < size_m; ++i)
+        vector_m[i] = orig.vector_m[i];
+}
+Vector & Vector::operator=(const Vector& vector)
+{
+    delete [] vector_m;
+    size_m = vector.size_m;
+    vector_m = new int[size_m];
+    for(int i = 0; i < size_m; ++i)
+        vector_m[i] = vector.vector_m[i];
+    return *this;
 }
 ostream & operator<<(ostream & os, const Vector & vector)
 {
