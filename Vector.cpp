@@ -43,6 +43,7 @@ Vector::Vector(int size, int *tab)
     {
         size_m = 0; 
         vector_m = NULL;
+        throw "Nieudana operacja";
     }
     else
     {
@@ -54,10 +55,19 @@ Vector::Vector(int size, int *tab)
 }
 Vector::Vector(const Vector& orig) 
 {
-    vector_m = new int[orig.size_m];
-    size_m = orig.size_m;
-    for(int i = 0; i < size_m; ++i)
-        vector_m[i] = orig.vector_m[i];
+    if(orig.size_m > 0 && orig.vector_m != NULL)
+    {
+        vector_m = new int[orig.size_m];
+        size_m = orig.size_m;
+        for(int i = 0; i < size_m; ++i)
+            vector_m[i] = orig.vector_m[i];
+    }
+    else
+    {
+        vector_m = NULL;
+        size_m = 0;
+        throw "Blad ";
+    }
 }
 ////////////////////
 ////////////////////
@@ -95,20 +105,76 @@ bool operator!=(const Vector & first,const Vector & second)
 }
 Vector Vector::operator +(const Vector& vector) const
 {
-    static Vector suma;
-    suma.~Vector();
+    Vector suma(0);
     if(size_m == vector.size_m)
     {
         suma = Vector(size_m);
         for(int i = 0; i < size_m; ++i)
             suma.vector_m[i] = vector_m[i] + vector.vector_m[i];
     }
-    else
+    return suma;
+}
+Vector Vector::operator -(const Vector& vector) const
+{
+    Vector suma(0);
+    if(size_m == vector.size_m)
     {
-        suma.size_m = 0; 
-        suma.vector_m = NULL;
+        suma = Vector(size_m);
+        for(int i = 0; i < size_m; ++i)
+            suma.vector_m[i] = vector_m[i] - vector.vector_m[i];
     }
     return suma;
+}
+Vector Vector::operator +=(const Vector& vector)
+{
+    if(size_m == vector.size_m)
+    {
+        for(int i = 0; i < size_m; ++i)
+            vector_m[i] += vector.vector_m[i];
+    }
+    return *this;
+}
+Vector Vector::operator -=(const Vector& vector)
+{
+    if(size_m == vector.size_m)
+    {
+        for(int i = 0; i < size_m; ++i)
+            vector_m[i] -= vector.vector_m[i];
+    }
+    return *this;
+}
+Vector Vector::operator *(int value)
+{
+    Vector iloczyn(size_m);
+    if(vector_m != NULL)
+    {
+        for(int i = 0; i < size_m; ++i)
+            iloczyn.vector_m[i] = value * vector_m[i];
+    }
+    return iloczyn;
+}
+Vector operator*(int value, const Vector & vector)
+{
+    Vector iloczyn(vector.size_m);
+    if(vector.vector_m != NULL)
+    {
+        for(int i = 0; i < vector.size_m; ++i)
+            iloczyn.vector_m[i] = value * vector.vector_m[i];
+    }
+    return iloczyn;
+}
+Vector Vector::operator *=(int value)
+{
+    if(vector_m != NULL)
+    {
+        for(int i = 0; i < size_m; ++i)
+            vector_m[i] *= value;
+    }
+    return *this;
+}
+int Vector::operator [](int i) const
+{
+        return vector_m[i];
 }
 ostream & operator<<(ostream & os, const Vector & vector)
 {

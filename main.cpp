@@ -22,9 +22,23 @@ int main(int argc, char** argv) {
     using namespace std;
     int tab[3] = {1,2,3};
     int table[3] = {1,4,3};
-    Vector vector(3,tab);
-    Vector cos(3,table);
-    cout<<cos+vector;
+    Vector v1(3,tab);
+    Vector v2(3,table);
+    cout<<"Dodawanie (+)\n";
+    cout<<v1<<"+\n"<<v2<<"=\n"<<v1+v2;
+    cout<<"odejmowanie (+)\n";
+    cout<<v1<<"-\n "<<v2<<"=\n"<<v1-v2;
+    cout<<"Dodawanie (+=)\n";
+    v1+=v2;
+    cout<<"v1"<<"+=\n "<<"v2"<<"=\n"<<v1;
+    cout<<2*v1*2;
+  /*  cout<<v1<<" += "<<v2<<" = "<<v1+=v2;
+    cout<<"odejmowanie (-=)\n";
+    cout<<v1<<" -= "<<v2<<" = "<<v1-=v2;
+    cout<<"mnozenie (*)\n";
+    cout<<"2"<<" * "<<v2<<" = "<<(2*v2);
+    cout<<"mnozenie (=)\n";
+    cout<<"2"<<" =* "<<v2<<" = "<<(2*v2);*/  //cout<<"A\n"<<v1<<
     return 0;
 }
 

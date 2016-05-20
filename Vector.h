@@ -14,7 +14,6 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 #include <iostream>
-#include <stdexcept>
 using namespace std;
 class Vector 
 {
@@ -30,13 +29,16 @@ class Vector
         bool operator==(const Vector & vector) const;// \/
         friend bool operator!=(const Vector & first,const Vector & second) ; // \/
         
-        Vector operator+(const Vector & vector) const; 
+        Vector operator+(const Vector & vector) const; // \/
         Vector operator-(const Vector & vector) const; 
-        Vector operator+=(const Vector & vector); 
-        Vector operator-=(const Vector & vector); 
-        Vector operator*(int value);
-        Vector operator*=(int value);
+        Vector operator+=(const Vector & vector); // \/
+        Vector operator-=(const Vector & vector);// \/ 
+        Vector operator*(int value);// \/
+        Vector operator*=(int value);// \/
+        //moze lepiej void
+        int operator[](int i) const;
         
+        friend Vector operator*(int value, const Vector & vector);
         friend ostream & operator<<(ostream & os, const Vector & vector);
         friend istream & operator>>(istream & os, const Vector & vector);
     private:
