@@ -44,6 +44,7 @@ class Vector
     private:
         int *vector_m;
         int size_m;
+        void set_null(){size_m = 0; vector_m = NULL;}
         
 };
 

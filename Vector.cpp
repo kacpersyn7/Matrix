@@ -26,8 +26,7 @@ Vector::Vector(int size)
 {
     if(size < 1)
     {
-        size_m = 0; 
-        vector_m = NULL;
+        set_null();
     }
     else
     {
@@ -41,8 +40,7 @@ Vector::Vector(int size, int *tab)
 {
     if(size < 1)
     {
-        size_m = 0; 
-        vector_m = NULL;
+        set_null();
         throw "Nieudana operacja";
     }
     else
@@ -64,8 +62,7 @@ Vector::Vector(const Vector& orig)
     }
     else
     {
-        vector_m = NULL;
-        size_m = 0;
+        set_null();
         throw "Blad ";
     }
 }
@@ -179,7 +176,7 @@ int Vector::operator [](int i) const
 ostream & operator<<(ostream & os, const Vector & vector)
 {
     for(int i = 0; i < vector.size_m; ++i)
-        os<<vector.vector_m[i]<<"\n";
+        os<<vector.vector_m[i]<<" ";
     return os;
 }
 istream & operator>>(istream & os, const Vector & vector)

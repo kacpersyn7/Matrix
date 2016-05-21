@@ -14,7 +14,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "Vector.h"
-
+#include "Matrix.h"
 /*
  * 
  */
@@ -24,14 +24,18 @@ int main(int argc, char** argv) {
     int table[3] = {1,4,3};
     Vector v1(3,tab);
     Vector v2(3,table);
+    Matrix ma;
+    cout<<ma;
     cout<<"Dodawanie (+)\n";
-    cout<<v1<<"+\n"<<v2<<"=\n"<<v1+v2;
+    cout<<v1<<" + "<<v2<<" = "<<v1+v2<<endl;
     cout<<"odejmowanie (+)\n";
-    cout<<v1<<"-\n "<<v2<<"=\n"<<v1-v2;
+    cout<<v1<<" - "<<v2<<" = "<<v1-v2<<endl;
     cout<<"Dodawanie (+=)\n";
     v1+=v2;
-    cout<<"v1"<<"+=\n "<<"v2"<<"=\n"<<v1;
-    cout<<2*v1*2;
+    cout<<"v1"<<" +=  "<<"v2"<<" = "<<v1<<endl;
+    cout<<2*v1*2<<endl;
+    
+    //cout<<ma;
   /*  cout<<v1<<" += "<<v2<<" = "<<v1+=v2;
     cout<<"odejmowanie (-=)\n";
     cout<<v1<<" -= "<<v2<<" = "<<v1-=v2;
