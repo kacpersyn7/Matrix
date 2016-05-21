@@ -82,8 +82,6 @@ Matrix & Matrix::operator=(const Matrix& matrix)
 {
     if (this != &matrix)
     {  
-        for (int i = 0; i < cols_m; i++)
-            delete  (matrix_m + i);
         delete [] matrix_m; 
         rows_m = matrix.rows_m;
         cols_m = matrix.cols_m;
@@ -94,9 +92,59 @@ Matrix & Matrix::operator=(const Matrix& matrix)
     }
     return *this;
 }
+Matrix Matrix::operator +(const Matrix& matrix) const
+{
+    Matrix suma(0,0);
+    if(cols_m == matrix.cols_m && rows_m == matrix.rows_m)
+    {
+        suma = Matrix(rows_m,cols_m);
+        for(int i = 0; i < cols_m; ++i)
+            suma.matrix_m[i] = matrix_m[i] + matrix.matrix_m[i];
+    }
+    return suma;
+}
+Matrix Matrix::operator -(const Matrix& matrix) const
+{
+    Matrix suma(0,0);
+    if(cols_m == matrix.cols_m && rows_m == matrix.rows_m)
+    {
+        suma = Matrix(rows_m,cols_m);
+        for(int i = 0; i < cols_m; ++i)
+            suma.matrix_m[i] = matrix_m[i] - matrix.matrix_m[i];
+    }
+    return suma;
+}
+///////////////////////////////////////////
+///////////////////////////////////////////
+bool Matrix::operator==(const Matrix& matrix) const
+{
+    bool value = false;
+    if(this == &matrix)
+        value = true;
+    else if (cols_m == matrix.cols_m && rows_m == matrix.rows_m)
+    {  
+        for(int i = 0; i < cols_m; ++i)
+            if(matrix_m[i] != matrix.matrix_m[i])
+                break;
+        value = true;
+    }
+    
+    return value;
+}
+bool operator!=(const Matrix & first,const Matrix & second) 
+{
+    return !(first == second);
+}
 ostream & operator<<(ostream & os, const Matrix & matrix)
 {
     for(int i = 0; i < matrix.cols_m; ++i)
         os<<matrix.matrix_m[i]<<endl;
+    return os;
+}
+istream & operator>>(istream & os, const Matrix & matrix)
+{
+    Vector *pointer = matrix.matrix_m;
+    for (int i = 0; i < matrix.cols_m; i++)
+        cin >> pointer[i];
     return os;
 }

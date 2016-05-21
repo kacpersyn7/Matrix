@@ -20,14 +20,19 @@ class Matrix
     public:
         Matrix();
         Matrix(int rows, int cols);
-       // Matrix(int rows, int cols, Vector** tab);
+       // Matrix(int rows, int cols, int** tab);
         Matrix(const Matrix& orig);
         virtual ~Matrix();
         
         Matrix & operator=(const Matrix & matrix);
+        Matrix operator +(const Matrix& matrix) const;
+        Matrix operator -(const Matrix& matrix) const;
+        
+        bool operator==(const Matrix & matrix) const;
+        friend bool operator!=(const Matrix & first,const Matrix & second) ;
         
         friend ostream & operator<<(ostream & os, const Matrix & matrix);
-        
+        friend istream & operator>>(istream & os, const Matrix & matrix);
     private:
         Vector *matrix_m;
         int rows_m;

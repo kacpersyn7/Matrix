@@ -25,14 +25,20 @@ int main(int argc, char** argv) {
     Vector v1(3,tab);
     Vector v2(3,table);
     Matrix ma;
+    cin>>ma;
     cout<<ma;
+    Matrix cos;
+    cos = ma;
+    cout<<cos;
+    cout<<ma + cos + cos;
     cout<<"Dodawanie (+)\n";
-    cout<<v1<<" + "<<v2<<" = "<<v1+v2<<endl;
+    cout<<v1<<" + "<<v1<<" = "<<v1+v1<<endl;
     cout<<"odejmowanie (+)\n";
     cout<<v1<<" - "<<v2<<" = "<<v1-v2<<endl;
     cout<<"Dodawanie (+=)\n";
     v1+=v2;
     cout<<"v1"<<" +=  "<<"v2"<<" = "<<v1<<endl;
+    cout<<"mnozenie (*)\n";
     cout<<2*v1*2<<endl;
     
     //cout<<ma;
