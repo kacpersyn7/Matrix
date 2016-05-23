@@ -27,7 +27,8 @@ class Matrix
         Matrix & operator=(const Matrix & matrix);
         Matrix operator +(const Matrix& matrix) const;
         Matrix operator -(const Matrix& matrix) const;
-        
+        void operator +=(const Matrix& matrix);
+        void operator -=(const Matrix& matrix);
         bool operator==(const Matrix & matrix) const;
         friend bool operator!=(const Matrix & first,const Matrix & second) ;
         

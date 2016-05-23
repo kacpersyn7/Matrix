@@ -24,10 +24,19 @@ int main(int argc, char** argv) {
     int table[3] = {1,4,3};
     Vector v1(3,tab);
     Vector v2(3,table);
-    Matrix ma;
+    Matrix heheh(3,2);
+    Matrix cos;
+    cin>>heheh;
+    cout<<heheh<<cos;
+    cos = heheh;
+    cos += heheh;
+    cout<<cos;
+    cout<<(cos != heheh);
+    
+   /* Matrix ma;
     cin>>ma;
     cout<<ma;
-    Matrix cos;
+    /*Matrix cos;
     cos = ma;
     cout<<cos;
     cout<<ma + cos + cos;
