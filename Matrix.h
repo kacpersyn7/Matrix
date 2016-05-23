@@ -20,22 +20,24 @@ class Matrix
     public:
         Matrix();
         Matrix(int rows, int cols);
-       // Matrix(int rows, int cols, int** tab);
         Matrix(const Matrix& orig);
         virtual ~Matrix();
         
         Matrix & operator=(const Matrix & matrix);
         Matrix operator +(const Matrix& matrix) const;
         Matrix operator -(const Matrix& matrix) const;
+        Matrix operator*(const int value) const;
+        Matrix operator*(const Matrix& matrix) const;
         void operator +=(const Matrix& matrix);
         void operator -=(const Matrix& matrix);
         bool operator==(const Matrix & matrix) const;
         friend bool operator!=(const Matrix & first,const Matrix & second) ;
         
+        friend Matrix operator*(int value, const Matrix & matrix);
         friend ostream & operator<<(ostream & os, const Matrix & matrix);
         friend istream & operator>>(istream & os, const Matrix & matrix);
     private:
-        Vector *matrix_m;
+        Vector **matrix_m;
         int rows_m;
         int cols_m;
         void set_null(){rows_m = 0; cols_m = 0; matrix_m = NULL;}

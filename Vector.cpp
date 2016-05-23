@@ -26,6 +26,7 @@ Vector::Vector(int size)
 {
     if(size < 1)
     {
+        throw "Nieudana operacja";
         set_null();
     }
     else

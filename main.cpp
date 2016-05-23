@@ -20,16 +20,16 @@
  */
 int main(int argc, char** argv) {
     using namespace std;
-    int tab[3] = {1,2,3};
-    int table[3] = {1,4,3};
-    Vector v1(3,tab);
-    Vector v2(3,table);
-    Matrix heheh(3,2);
-    Matrix cos;
-    cin>>heheh;
-    cout<<heheh<<cos;
-    cos = heheh;
-    cos += heheh;
+    Matrix m1;
+    Matrix m2(2,3);
+    Matrix m3(m2);
+    cout<<m3;
+    cin>>m1;
+    
+    
+    
+    //cout<<macierz;
+    /*cos += heheh;
     cout<<cos;
     cout<<(cos != heheh);
     
