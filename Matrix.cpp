@@ -161,20 +161,32 @@ Matrix operator*(int value, const Matrix & matrix)
 }
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-/*Matrix Matrix::operator *(const Matrix& matrix) const
+/*for(i = 0; i < ILWIERSZY; i++)
+    for(j = 0; j < ILWIERSZY; j++)
+      for(k = 0; k < ILKOLUMN; k++)
+        C[i][j] = C[i][j] + A[i][k] * B[k][j];*/
+Matrix Matrix::operator *(const Matrix& matrix) const
 {
-    Matrix iloczyn(0,0);
     if(cols_m == matrix.rows_m)
     {
-        suma = Matrix(rows_m,cols_m);
+        int max = (rows_m > cols_m ? rows_m : cols_m);
+        Matrix iloczyn(rows_m,matrix.cols_m);
+        int sum = 0;
         for(int i = 0; i < rows_m; ++i)
-            *(suma.matrix_m)[i] = *(matrix_m)[i] + *(matrix.matrix_m)[i];
-    }
+            for(int j = 0; j < matrix.cols_m; ++j)
+            {
+                for(int k = 0; k < max ; ++k)
+                    sum = sum + ((*(matrix_m)[i])[k]) * ((*(matrix.matrix_m)[k])[j]);
+                (*(iloczyn.matrix_m)[i]).change_value(j,sum);
+                sum = 0;
+            }
+        return iloczyn;
+    }       
     else
         throw "tak nie wolno, liczba kolumn musi byc rowna liczbie wierszy drugiej macierzy";
-
-    return suma;
-}*/
+        return *this;
+    
+}
 void Matrix::operator +=(const Matrix& matrix)
 {
     *this = *this + matrix; 

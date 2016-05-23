@@ -20,12 +20,11 @@
  */
 int main(int argc, char** argv) {
     using namespace std;
-    Matrix m1;
-    Matrix m2(2,3);
-    Matrix m3(m2);
-    cout<<m3;
+    Matrix m1(1,3);
+    Matrix m2(3,1);
     cin>>m1;
-    
+    cin>>m2;
+    cout<<(m1*m2);
     
     
     //cout<<macierz;

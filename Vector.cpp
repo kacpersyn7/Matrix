@@ -170,9 +170,16 @@ Vector Vector::operator *=(int value)
     }
     return *this;
 }
-int Vector::operator [](int i) const
+int Vector::operator [](int i) 
 {
-        return vector_m[i];
+        return *(vector_m+i);
+}
+int Vector::change_value(int i, int value)
+{
+    if(0<i<size_m)
+        *(vector_m + i) = value;
+    else
+        throw "Masz w ogole RiGCz?";
 }
 ostream & operator<<(ostream & os, const Vector & vector)
 {
