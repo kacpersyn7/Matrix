@@ -30,8 +30,10 @@ class Matrix
         Matrix operator*(const Matrix& matrix) const;
         void operator +=(const Matrix& matrix);
         void operator -=(const Matrix& matrix);
+        void operator *=(int value);
         bool operator==(const Matrix & matrix) const;
         friend bool operator!=(const Matrix & first,const Matrix & second) ;
+        Vector operator[](int i);
         
         friend Matrix operator*(int value, const Matrix & matrix);
         friend ostream & operator<<(ostream & os, const Matrix & matrix);

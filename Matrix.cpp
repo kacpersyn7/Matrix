@@ -169,13 +169,13 @@ Matrix Matrix::operator *(const Matrix& matrix) const
 {
     if(cols_m == matrix.rows_m)
     {
-        int max = (rows_m > cols_m ? rows_m : cols_m);
+        //int max = (rows_m > cols_m ? rows_m : cols_m);
         Matrix iloczyn(rows_m,matrix.cols_m);
         int sum = 0;
         for(int i = 0; i < rows_m; ++i)
-            for(int j = 0; j < matrix.cols_m; ++j)
+            for(int j = 0; j < rows_m; ++j)
             {
-                for(int k = 0; k < max ; ++k)
+                for(int k = 0; k < cols_m ; ++k)
                     sum = sum + ((*(matrix_m)[i])[k]) * ((*(matrix.matrix_m)[k])[j]);
                 (*(iloczyn.matrix_m)[i]).change_value(j,sum);
                 sum = 0;
@@ -194,6 +194,10 @@ void Matrix::operator +=(const Matrix& matrix)
 void Matrix::operator -=(const Matrix& matrix)
 {
     *this = *this - matrix; 
+}
+void Matrix::operator *=(int value)
+{
+    *this = *this * value; 
 }
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -215,6 +219,14 @@ bool Matrix::operator==(const Matrix& matrix) const
 bool operator!=(const Matrix & first,const Matrix & second) 
 {
     return !(first == second);
+}
+Vector Matrix::operator [](int i) 
+{
+    if(i<rows_m && i>0)
+        return *(matrix_m)[i];
+    else
+        return Vector(0);
+        throw "blad";
 }
 ostream & operator<<(ostream & os, const Matrix & matrix)
 {

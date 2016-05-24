@@ -15,17 +15,20 @@
 #include <iostream>
 #include "Vector.h"
 #include "Matrix.h"
+#include <stdlib.h>
 /*
  * 
  */
 int main(int argc, char** argv) {
     using namespace std;
-    Matrix m1(1,3);
-    Matrix m2(3,1);
-    cin>>m1;
-    cin>>m2;
-    cout<<(m1*m2);
-    
+    try
+    {
+        Matrix m1(1,3);
+        Matrix m2(3,1);
+        cin>>m1;
+        cin>>m2;
+        cout<<(m2*m1);
+    }
     
     //cout<<macierz;
     /*cos += heheh;
@@ -57,6 +60,19 @@ int main(int argc, char** argv) {
     cout<<"2"<<" * "<<v2<<" = "<<(2*v2);
     cout<<"mnozenie (=)\n";
     cout<<"2"<<" =* "<<v2<<" = "<<(2*v2);*/  //cout<<"A\n"<<v1<<
+    
+    catch(const char * s)
+    { 
+        cout<<s<<endl;
+        cout<<"Koncze wykonywanie programu\n\n ";
+        exit(EXIT_FAILURE);
+    }
+
+    catch(std::bad_alloc & c)
+    {
+        cout << c.what()<<endl;
+        cout << "Koncze wykonywanie programu\n\n";
+    }
     return 0;
 }
 
