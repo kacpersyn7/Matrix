@@ -30,7 +30,7 @@ Matrix::Matrix(int rows, int cols)
     if(rows < 1 || cols < 1)
     {
         set_null();
-        throw "tak nie mozna";
+        throw "zla liczba wierszy lub kolumn";
     }
     else 
     {
@@ -42,25 +42,6 @@ Matrix::Matrix(int rows, int cols)
               *(matrix_m + i) = new Vector(cols_m);
     }
 }
-/*Matrix::Matrix(int rows, int cols, int ** tab)
-{
-    if(rows < 1 || cols < 1)
-    {
-        set_null();
-        throw "tak nie mozna";
-    }
-    else 
-    {
-        rows_m = rows;
-        cols_m = cols;
-        matrix_m = new Vector*[rows_m];
-        if(matrix_m != NULL)
-            for(int i = 0; i < rows_m; ++i)
-                *(matrix_m + i) = new Vector(cols_m,tab[i]);
-        else
-            throw "cos sie popsulo";
-    }
-}*/
 Matrix::Matrix(const Matrix& orig) 
 {
     matrix_m = new Vector*[orig.rows_m];
@@ -74,7 +55,7 @@ Matrix::Matrix(const Matrix& orig)
             *(matrix_m)[i] = *(orig.matrix_m)[i];
     }
     else
-            throw "cos sie popsulo";
+            throw "blad alokacji";
 }
 Matrix::~Matrix() 
 {
@@ -104,36 +85,39 @@ Matrix & Matrix::operator=(const Matrix& matrix)
                 *(matrix_m)[i] = *(matrix.matrix_m)[i];
         }
         else
-            throw "cos sie popsulo";
+            throw "blad alokacji";
     }
     return *this;
 }
 Matrix Matrix::operator +(const Matrix& matrix) const
 {
-    Matrix suma(0,0);
     if(cols_m == matrix.cols_m && rows_m == matrix.rows_m)
     {
-        suma = Matrix(rows_m,cols_m);
+        Matrix suma(rows_m,cols_m);
         for(int i = 0; i < rows_m; ++i)
-            *(suma.matrix_m)[i] = *(matrix_m)[i] + *(matrix.matrix_m)[i];
+            (*(suma.matrix_m)[i]) = (*(matrix_m)[i]) + (*(matrix.matrix_m)[i]);
+        return suma;
     }
     else
+    {
         throw "tak nie wolno";
-
-    return suma;
+        return *this;
+    }
 }
 Matrix Matrix::operator -(const Matrix& matrix) const
 {
-    Matrix suma(0,0);
     if(cols_m == matrix.cols_m && rows_m == matrix.rows_m)
     {
-        suma = Matrix(rows_m,cols_m);
+        Matrix suma(rows_m,cols_m);
         for(int i = 0; i < rows_m; ++i)
             *(suma.matrix_m)[i] = *(matrix_m)[i] - *(matrix.matrix_m)[i];
+        return suma;
     }
     else
+    {
         throw "tak nie wolno";
-    return suma;
+        return *this;
+    }
 }
 Matrix Matrix::operator *(int value) const
 {
@@ -144,7 +128,7 @@ Matrix Matrix::operator *(int value) const
             *(iloczyn.matrix_m)[i] = value * (*(matrix_m)[i]);
     }
     else
-        throw "cos sie popsulo";
+        throw "blad alokacji";
     return iloczyn;
 }
 Matrix operator*(int value, const Matrix & matrix)
@@ -156,20 +140,15 @@ Matrix operator*(int value, const Matrix & matrix)
             *(iloczyn.matrix_m)[i] = value * (*(matrix.matrix_m)[i]);
     }
     else
-        throw "cos sie popsulo";
+        throw "blad alokacji";
     return iloczyn;
 }
 ////////////////////////////////////////////
 ////////////////////////////////////////////
-/*for(i = 0; i < ILWIERSZY; i++)
-    for(j = 0; j < ILWIERSZY; j++)
-      for(k = 0; k < ILKOLUMN; k++)
-        C[i][j] = C[i][j] + A[i][k] * B[k][j];*/
 Matrix Matrix::operator *(const Matrix& matrix) const
 {
     if(cols_m == matrix.rows_m)
     {
-        //int max = (rows_m > cols_m ? rows_m : cols_m);
         Matrix iloczyn(rows_m,matrix.cols_m);
         int sum = 0;
         for(int i = 0; i < rows_m; ++i)
@@ -225,8 +204,10 @@ Vector Matrix::operator [](int i)
     if(i<rows_m && i>0)
         return *(matrix_m)[i];
     else
+    {
         return Vector(0);
         throw "blad";
+    }
 }
 ostream & operator<<(ostream & os, const Matrix & matrix)
 {

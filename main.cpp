@@ -23,44 +23,28 @@ int main(int argc, char** argv) {
     using namespace std;
     try
     {
-        Matrix m1(1,3);
-        Matrix m2(3,1);
+        Matrix m1(2,2);
+        Matrix m2(2,2);
+        cout<<"Podaj pierwsza macierz\n";
         cin>>m1;
+        cout<<"Podaj druga macierz\n";
         cin>>m2;
-        cout<<(m2*m1);
+        cout<<"mnozenie\n";
+        cout<<(m1*m2);
+        cout<<"dodawanie\n";
+        cout<<(m1+m2);
+        cout<<"odejmowanie\n";
+        cout<<(m1-m2);
+        cout<<"mnozenine przez skalar 2*m1*2\n";
+        cout<<(2*m1*2);
+        cout<<"przypisanie v1 = v2\n";
+        m1 = m2;
+        cout<<m1;
+        Matrix m3(m1);
+        cout<<"konstruktor kopiujacy\n";
+        cout<<m3;
+        
     }
-    
-    //cout<<macierz;
-    /*cos += heheh;
-    cout<<cos;
-    cout<<(cos != heheh);
-    
-   /* Matrix ma;
-    cin>>ma;
-    cout<<ma;
-    /*Matrix cos;
-    cos = ma;
-    cout<<cos;
-    cout<<ma + cos + cos;
-    cout<<"Dodawanie (+)\n";
-    cout<<v1<<" + "<<v1<<" = "<<v1+v1<<endl;
-    cout<<"odejmowanie (+)\n";
-    cout<<v1<<" - "<<v2<<" = "<<v1-v2<<endl;
-    cout<<"Dodawanie (+=)\n";
-    v1+=v2;
-    cout<<"v1"<<" +=  "<<"v2"<<" = "<<v1<<endl;
-    cout<<"mnozenie (*)\n";
-    cout<<2*v1*2<<endl;
-    
-    //cout<<ma;
-  /*  cout<<v1<<" += "<<v2<<" = "<<v1+=v2;
-    cout<<"odejmowanie (-=)\n";
-    cout<<v1<<" -= "<<v2<<" = "<<v1-=v2;
-    cout<<"mnozenie (*)\n";
-    cout<<"2"<<" * "<<v2<<" = "<<(2*v2);
-    cout<<"mnozenie (=)\n";
-    cout<<"2"<<" =* "<<v2<<" = "<<(2*v2);*/  //cout<<"A\n"<<v1<<
-    
     catch(const char * s)
     { 
         cout<<s<<endl;

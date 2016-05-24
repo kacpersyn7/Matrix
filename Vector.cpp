@@ -26,7 +26,7 @@ Vector::Vector(int size)
 {
     if(size < 1)
     {
-        throw "Nieudana operacja";
+        throw "Nieudana operacja - zly rozmiar";
         set_null();
     }
     else
@@ -42,7 +42,7 @@ Vector::Vector(int size, int *tab)
     if(size < 1)
     {
         set_null();
-        throw "Nieudana operacja";
+        throw "Nieudana operacja - zly rozmiar";
     }
     else
     {
@@ -103,25 +103,33 @@ bool operator!=(const Vector & first,const Vector & second)
 }
 Vector Vector::operator +(const Vector& vector) const
 {
-    Vector suma(0);
     if(size_m == vector.size_m)
     {
-        suma = Vector(size_m);
+        Vector suma(size_m);
         for(int i = 0; i < size_m; ++i)
             suma.vector_m[i] = vector_m[i] + vector.vector_m[i];
+        return suma;
     }
-    return suma;
+    else 
+    {
+        throw "zly rozmiar wektora";
+        return *this;
+    }
 }
 Vector Vector::operator -(const Vector& vector) const
 {
-    Vector suma(0);
     if(size_m == vector.size_m)
     {
-        suma = Vector(size_m);
+        Vector suma(size_m);
         for(int i = 0; i < size_m; ++i)
             suma.vector_m[i] = vector_m[i] - vector.vector_m[i];
+        return suma;
     }
-    return suma;
+    else 
+    {
+        throw "zly rozmiar wektora";
+        return *this;
+    }
 }
 Vector Vector::operator +=(const Vector& vector)
 {
@@ -179,7 +187,7 @@ int Vector::change_value(int i, int value)
     if(0<i<size_m)
         *(vector_m + i) = value;
     else
-        throw "Masz w ogole RiGCz?";
+        throw "zly rozmiar wektora";
 }
 ostream & operator<<(ostream & os, const Vector & vector)
 {

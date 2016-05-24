@@ -18,26 +18,28 @@ using namespace std;
 class Vector 
 {
     public:
-        Vector(int size, int *tab);// \/
-        Vector(const Vector& orig);// \/
+        Vector(int size, int *tab);
+        Vector(const Vector& orig);
         Vector(int size);
-        Vector();// \/
-        virtual ~Vector();// \/
+        Vector();
+        virtual ~Vector();
         
-        Vector & operator=(const Vector & vector);// \/
+        Vector & operator=(const Vector & vector);
         
-        bool operator==(const Vector & vector) const;// \/
-        friend bool operator!=(const Vector & first,const Vector & second) ; // \/
+        bool operator==(const Vector & vector) const;
+        friend bool operator!=(const Vector & first,const Vector & second) ; 
         
-        Vector operator+(const Vector & vector) const; // \/
+        Vector operator+(const Vector & vector) const; 
         Vector operator-(const Vector & vector) const; 
-        Vector operator+=(const Vector & vector); // \/
-        Vector operator-=(const Vector & vector);// \/ 
-        Vector operator*(int value);// \/
-        Vector operator*=(int value);// \/
-        //moze lepiej void
+        Vector operator+=(const Vector & vector);
+        Vector operator-=(const Vector & vector);
+        Vector operator*(int value);
+        Vector operator*=(int value);
+        
         int operator[](int i);
+        
         int change_value(int i, int value);
+        
         friend Vector operator*(int value, const Vector & vector);
         friend ostream & operator<<(ostream & os, const Vector & vector);
         friend istream & operator>>(istream & os, const Vector & vector);

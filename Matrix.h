@@ -33,7 +33,7 @@ class Matrix
         void operator *=(int value);
         bool operator==(const Matrix & matrix) const;
         friend bool operator!=(const Matrix & first,const Matrix & second) ;
-        Vector operator[](int i);
+        Vector operator[](int i) ;
         
         friend Matrix operator*(int value, const Matrix & matrix);
         friend ostream & operator<<(ostream & os, const Matrix & matrix);
