@@ -178,16 +178,9 @@ Vector Vector::operator *=(int value)
     }
     return *this;
 }
-int Vector::operator [](int i) 
+int & Vector::operator [](int i) 
 {
         return *(vector_m+i);
-}
-int Vector::change_value(int i, int value)
-{
-    if(0<i<size_m)
-        *(vector_m + i) = value;
-    else
-        throw "zly rozmiar wektora";
 }
 ostream & operator<<(ostream & os, const Vector & vector)
 {

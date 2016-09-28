@@ -101,7 +101,8 @@ Matrix Matrix::operator +(const Matrix& matrix) const
     else
     {
         throw "tak nie wolno";
-        return *this;
+        
+        //return *this;
     }
 }
 Matrix Matrix::operator -(const Matrix& matrix) const
@@ -156,7 +157,7 @@ Matrix Matrix::operator *(const Matrix& matrix) const
             {
                 for(int k = 0; k < cols_m ; ++k)
                     sum = sum + ((*(matrix_m)[i])[k]) * ((*(matrix.matrix_m)[k])[j]);
-                (*(iloczyn.matrix_m)[i]).change_value(j,sum);
+                (*iloczyn.matrix_m[i])[j] = sum;
                 sum = 0;
             }
         return iloczyn;

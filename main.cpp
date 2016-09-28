@@ -20,11 +20,16 @@
  * 
  */
 int main(int argc, char** argv) {
-    using namespace std;
+    using std::cout;
+    using std::cin;
     try
     {
-        Matrix m1(2,2);
-        Matrix m2(2,2);
+        Vector v1(3);
+        cin>>v1;
+        v1 *= 2;
+        cout<<v1;
+        Matrix m1(3,2);
+        Matrix m2(2,3);
         cout<<"Podaj pierwsza macierz\n";
         cin>>m1;
         cout<<"Podaj druga macierz\n";

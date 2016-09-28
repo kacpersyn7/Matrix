@@ -36,9 +36,7 @@ class Vector
         Vector operator*(int value);
         Vector operator*=(int value);
         
-        int operator[](int i);
-        
-        int change_value(int i, int value);
+        int & operator[](int i);
         
         friend Vector operator*(int value, const Vector & vector);
         friend ostream & operator<<(ostream & os, const Vector & vector);
